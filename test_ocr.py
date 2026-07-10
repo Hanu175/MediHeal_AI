@@ -1,8 +1,19 @@
-from utils.ocr import extract_text
+from PIL import Image
+import google.generativeai as genai
 
-report_path = "uploads/sample_report.png"
+from config.settings import GOOGLE_API_KEY
 
-text = extract_text(report_path)
+genai.configure(api_key=GOOGLE_API_KEY)
 
-print("\n===== OCR OUTPUT =====\n")
-print(text)
+model = genai.GenerativeModel("gemini-2.5-flash")
+
+image = Image.open("uploads/sample_report.png")
+
+response = model.generate_content(
+    [
+        "Describe this image in one sentence.",
+        image,
+    ]
+)
+
+print(response.text)

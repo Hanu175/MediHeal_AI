@@ -14,10 +14,14 @@ def create_state(
         "uploaded_report_path": uploaded_report_path,
 
         "report_summary": None,
+        
+        "report_json": None,
 
         "medication_input": medication_input,
 
         "medication_schedule": None,
+        
+        "chat_response": None,
 
         "next_agent": next_agent,
 

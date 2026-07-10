@@ -18,6 +18,8 @@ def report_parser_agent(state: MediSphereState):
             image_path
         )
 
+        state["report_json"] = result["json"]
+
         state["report_summary"] = result["markdown"]
 
         state["final_response"] = result["markdown"]

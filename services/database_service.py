@@ -1,8 +1,4 @@
-from database.db import (
-    save_interaction,
-    get_history,
-)
-
+from database.db import *
 
 class DatabaseService:
 
@@ -16,14 +12,44 @@ class DatabaseService:
     ):
 
         save_interaction(
-            agent=agent,
-            user_input=user_input,
-            response=response,
-            execution_time=execution_time,
-            status=status,
+            agent,
+            user_input,
+            response,
+            execution_time,
+            status,
         )
 
     @staticmethod
     def history():
 
         return get_history()
+
+    @staticmethod
+    def total_reports():
+
+        return get_total_reports()
+
+    @staticmethod
+    def total_medications():
+
+        return get_total_medications()
+
+    @staticmethod
+    def success_count():
+
+        return get_success_count()
+
+    @staticmethod
+    def failed_count():
+
+        return get_failed_count()
+
+    @staticmethod
+    def average_runtime():
+
+        return get_average_runtime()
+
+    @staticmethod
+    def latest_activity():
+
+        return get_latest_activity()

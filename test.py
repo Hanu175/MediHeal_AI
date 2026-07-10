@@ -1,13 +1,15 @@
-# from config.settings import llm
+from ui.components.metric_card import metric_card
 
-# response = llm.invoke("Reply with exactly: Gemini Connected")
+col1, col2, col3, col4 = st.columns(4)
 
-# print(response.content)
+with col1:
+    metric_card("Reports", 12, "🩺")
 
-import os
-from config.settings import TESSERACT_PATH
+with col2:
+    metric_card("Medication", 5, "💊")
 
-print("Configured Path:")
-print(TESSERACT_PATH)
+with col3:
+    metric_card("AI Chats", 24, "🤖")
 
-print("\nExists:", os.path.exists(TESSERACT_PATH))
+with col4:
+    metric_card("Success", "98%", "✅")

@@ -5,6 +5,7 @@ from models.state import MediSphereState
 
 from agents.report_parser import report_parser_agent
 from agents.medication_manager import medication_manager_agent
+from agents.chat_agent import chat_agent
 
 
 # ----------------------------
@@ -22,6 +23,10 @@ def supervisor(state: MediSphereState):
     if next_agent == "medication":
 
         return "medication"
+
+    if next_agent == "chat":
+
+        return "chat"
 
     return END
 
@@ -47,7 +52,8 @@ builder.set_conditional_entry_point(
     {
         "report": "report",
         "medication": "medication",
-        END: END
+        "chat": "chat",
+        END: END,
     }
 )
 
@@ -58,6 +64,16 @@ builder.add_edge(
 
 builder.add_edge(
     "medication",
+    END
+)
+
+builder.add_node(
+    "chat",
+    chat_agent
+)
+
+builder.add_edge(
+    "chat",
     END
 )
 

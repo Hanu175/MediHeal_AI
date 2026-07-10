@@ -20,6 +20,8 @@ class MediSphereState(TypedDict):
     # Report Parser Output
     # ----------------------------
     report_summary: Optional[str]
+    
+    report_json: Optional[dict]
 
     # ----------------------------
     # Medication Manager
@@ -27,6 +29,8 @@ class MediSphereState(TypedDict):
     medication_input: Optional[str]
 
     medication_schedule: Optional[str]
+    
+    chat_response: Optional[str]
 
     # ----------------------------
     # Supervisor Routing

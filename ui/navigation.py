@@ -1,21 +1,16 @@
 import streamlit as st
 
 
-PAGES = [
-
-    "🏠 Dashboard",
-
-    "🩺 Medical Report",
-
-    "💊 Medication",
-
-    "📜 History",
-
-    "📊 Analytics",
-
-    "⚙ Settings",
-
-]
+PAGES = {
+    "🏠 Dashboard": "dashboard",
+    "🩺 Medical Report": "report",
+    "💬 AI Assistant": "chat",
+    "📊 Compare Reports": "compare",
+    "💊 Medication": "medication",
+    "📜 History": "history",
+    "📈 Analytics": "analytics",
+    "⚙ Settings": "settings",
+}
 
 
 def navigation():

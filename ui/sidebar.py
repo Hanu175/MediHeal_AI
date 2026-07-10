@@ -1,5 +1,7 @@
 import streamlit as st
 
+from utils.session_manager import SessionManager
+
 
 def render_sidebar():
 
@@ -7,39 +9,68 @@ def render_sidebar():
 
         st.title("🩺 MediSphere AI")
 
-        st.caption("AI Powered Healthcare Assistant")
+        st.caption("AI Healthcare Assistant")
 
-        st.markdown("---")
+        st.divider()
 
-        st.markdown("### 🤖 Active Agents")
+        # -----------------------------
+        # System Status
+        # -----------------------------
 
-        st.success("Supervisor")
+        st.subheader("📡 System Status")
 
-        st.success("Medical Report Parser")
+        st.success("🟢 Database Connected")
 
-        st.success("Medication Manager")
+        st.success("🟢 Session Active")
 
-        st.markdown("---")
+        if SessionManager.get_report()["markdown"]:
 
-        st.markdown("### ⚙ Technology")
+            st.success("🟢 Report Loaded")
 
-        st.markdown("- LangGraph")
-        st.markdown("- Gemini")
-        st.markdown("- Tesseract OCR")
-        st.markdown("- SQLite")
+        else:
 
-        st.markdown("---")
+            st.warning("🟡 No Report")
 
-        st.info(
-            """
-**Current Version**
+        if SessionManager.get_medication():
 
-Phase 1
+            st.success("🟢 Medication Loaded")
 
-**Architecture**
+        else:
 
-2 Active AI Agents
+            st.warning("🟡 No Medication")
 
-Built using a modular Service Layer.
-"""
-        )
+        st.divider()
+
+        # -----------------------------
+        # Last Agent
+        # -----------------------------
+
+        st.subheader("🤖 Last Active Agent")
+
+        agent = SessionManager.get_last_agent()
+
+        if agent:
+
+            st.info(agent)
+
+        else:
+
+            st.caption("No activity yet.")
+
+        st.divider()
+
+        st.subheader("⚙ Technology")
+
+        st.write("• LangGraph")
+
+        st.write("• Gemini")
+
+        st.write("• Streamlit")
+
+        st.write("• SQLite")
+
+        st.write("• OCR")
+
+        st.divider()
+
+        st.caption("Version 2.0.0")

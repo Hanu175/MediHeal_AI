@@ -7,6 +7,9 @@ from database.db import init_db
 
 init_db()
 
+from utils.session_manager import SessionManager
+
+SessionManager.initialize()
 # -----------------------------
 # UI Imports
 # -----------------------------
@@ -87,22 +90,34 @@ elif page == "🩺 Medical Report":
 elif page == "💊 Medication":
 
     render_medication_page()
+    
+elif page == "💬 AI Assistant":
+
+    from ui.chat_page import render_chat_page
+
+    render_chat_page()
 
 elif page == "📜 History":
 
     render_history()
 
-elif page == "📊 Analytics":
+elif page == "📈 Analytics":
 
-    st.title("📊 Analytics")
+    from ui.analytics import render_analytics
 
-    st.info("Analytics Dashboard is under development.")
+    render_analytics()
 
 elif page == "⚙ Settings":
 
     st.title("⚙ Settings")
 
     st.info("Settings page is under development.")
+    
+elif page == "📊 Compare Reports":
+
+    from ui.comparison_page import render_comparison_page
+
+    render_comparison_page()
 
 else:
 
