@@ -45,6 +45,25 @@ TESSERACT_PATH = os.getenv(
     "TESSERACT_PATH",
     r"C:\Users\Lenovo\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 )
+# import os
+# import platform
+
+# if platform.system() == "Windows":
+
+#     DEFAULT_TESSERACT = (
+#         r"C:\Users\Lenovo\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+#     )
+
+# else:
+
+#     DEFAULT_TESSERACT = "/usr/bin/tesseract"
+
+
+# TESSERACT_PATH = os.getenv(
+#     "TESSERACT_PATH",
+#     DEFAULT_TESSERACT,
+# )
+
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
